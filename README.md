@@ -50,7 +50,7 @@ The following properties can be configured:
 		<tr>
 			<td><code>lat</code></td>
 			<td>latitute of your position (city)
-				<br><b>You can use google maps to get this info
+				<br>You can use google maps to get this info
 				<br><b>Default value:</b> <code>false</code>
 			</td>
 		</tr>
@@ -93,7 +93,7 @@ The following properties can be configured:
 			<td><code>useUpdateInterval</code></td>
 			<td>Using internal update interval or triggered by MMM-ModuleScheduler to fetch and update new praying time? if <code>false</code>, add new schedule entry in MMM-ModuleScheduler:
 				<br><code>{notification: 'PRAYER_TIME', schedule: '1 0 * * *', payload: {type: 'UPDATE_PRAYINGTIME'}}</code>
-				<br><b>Possible values:</b> <code>true, false<code>
+				<br><b>Possible values:</b> <code>true, false</code>
 				<br><b>Default value:</b> <code>true</code> (1 day)
 			</td>
 		</tr>
@@ -112,7 +112,7 @@ The following properties can be configured:
 		</tr>
 		<tr>
 			<td><code>language</code></td>
-			<td>module language. Can be different from MM.<br>
+			<td>module language. Can be different from MM.
 				<br><b>Default value:</b> <code>config.language</code>
 			</td>
 		</tr>
@@ -121,7 +121,7 @@ The following properties can be configured:
 
 ## Dependencies
 - Access to the internet to download praying time from http://api.aladhan.com
-- MMM-ModuleScheduler(https://github.com/ianperrin/MMM-ModuleScheduler)
+- [MMM-ModuleScheduler](https://github.com/ianperrin/MMM-ModuleScheduler)
 - omxplayer (<code>sudo apt-get install omxplayer</code>)
 
 The MIT License (MIT)
