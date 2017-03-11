@@ -1,0 +1,14 @@
+.MMM-PrayerTime table {
+  width: 150px;
+}
+
+.MMM-PrayerTime td {
+  width: 50px;
+}
+
+.MMM-PrayerTime .occasion-name {
+  text-align: left;
+}
+.MMM-PrayerTime .occasion-time {
+  text-align: right;
+}

@@ -1,0 +1,14 @@
+{
+	"Fajr": "Subuh",
+	"Sunrise": "Terbit",
+	"Dhuhr": "Dhuhur",
+	"Asr": "Ashar",
+	"Sunset": "Terbenam",
+	"Maghrib": "Maghrib",
+	"Isha": "Isya'",
+	"Imsak": "Imsak",
+	"Midnight": "Tengah Malam",
+
+	"TODAY": "Hari Ini",
+	"TOMORROW": "Besok"
+}
