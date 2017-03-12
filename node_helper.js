@@ -22,10 +22,6 @@ module.exports = NodeHelper.create({
         async.apply(exec, '/usr/bin/omxplayer -o hdmi modules/MMM-PrayerTime/res/adzan.mp3')
       ],
       function (err, res) {
-        /*console.log("err");
-        console.log(err);
-        console.log("res");
-        console.log(res);*/
       });
 		}
 	},

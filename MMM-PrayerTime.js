@@ -82,7 +82,6 @@ Module.register("MMM-PrayerTime",{
         this.arrAdzanTime.push(this.todaySchedule[x]);
     }
     this.arrTodaySchedule.sort(sortSchedule);
-    console.log(this.arrTodaySchedule);
 
     // sort nextday schedule
     this.arrNextdaySchedule = [];
@@ -91,7 +90,6 @@ Module.register("MMM-PrayerTime",{
         this.arrNextdaySchedule.push([x, this.nextdaySchedule[x]]);
     }
     this.arrNextdaySchedule.sort(sortSchedule);
-    console.log(this.arrNextdaySchedule);
 
     this.loaded = true;
 		this.updateDom(this.config.animationSpeed);
@@ -104,8 +102,6 @@ Module.register("MMM-PrayerTime",{
     var curUnixTime = moment().unix();
     var urlToday = urlBase + this.getParams(curUnixTime);
     var urlNextday = urlBase + this.getParams(curUnixTime + 86400);
-    console.log("urlToday-" + urlToday);
-    console.log("urlNextday-" + urlNextday);
     var resultToday = {};
     var resultNextday = {};
     var nbReq = 2;
@@ -117,10 +113,7 @@ Module.register("MMM-PrayerTime",{
 			if (this.readyState === 4) {
 				if (this.status === 200) {
           resultToday = JSON.parse(this.responseText);
-          console.log("this.responseText = ["+this.responseText+"]");
-          console.log("resultToday = ["+resultToday+"]");
           self.todaySchedule = resultToday.data.timings;
-          console.log(self.todaySchedule);
           nbRes++;
           if (nbRes == nbReq)
             self.processSchedule();
@@ -138,10 +131,7 @@ Module.register("MMM-PrayerTime",{
 			if (this.readyState === 4) {
 				if (this.status === 200) {
           resultNextday = JSON.parse(this.responseText);
-          console.log("this.responseText = ["+this.responseText+"]");
-          console.log("resultNextday = ["+resultNextday+"]");
           self.nextdaySchedule = resultNextday.data.timings;
-          console.log(self.nextdaySchedule);
           nbRes++;
           if (nbRes == nbReq)
             self.processSchedule();
@@ -155,13 +145,9 @@ Module.register("MMM-PrayerTime",{
   },
 
   isAdzanNow: function() {
-    console.log('this.arrAdzanTime.length-'+this.arrAdzanTime.length);
-    console.log(this.arrAdzanTime);
     var curTime = moment().format("HH:mm");
-    console.log('curTime-'+curTime);
     if (this.arrAdzanTime.length > 0) {
       if (this.arrAdzanTime.includes(curTime)) {
-        console.log('playAdzan@'+curTime);
         this.sendSocketNotification("PLAY_ADZAN", {});
       }
     }
