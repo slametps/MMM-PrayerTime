@@ -1,5 +1,5 @@
 # MMM-PrayerTime
-This an extension for the [MagicMirror](https://github.com/MichMich/MagicMirror). It will display prayer time (in local time).
+This an extension for the [MagicMirror](https://github.com/MichMich/MagicMirror). It will display prayer time (in local time) and also recite Adzan/Adhan. Your mirror will be your helpful assistant to do sholat on time.
 
 ## Installation
 1. Navigate into your MagicMirror's `modules` folder and execute `https://github.com/slametps/MMM-PrayerTime.git`.
