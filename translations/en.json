@@ -9,6 +9,9 @@
 	"Imsak": "Imsak",
 	"Midnight": "Midnight",
 
+	"ADZAN": "ADHAN",
+	"ALERT_ADZAN_MSG": "It's praying time. Let's Sholat!",
+
 	"TODAY": "Today",
 	"TOMORROW": "Tomorrow"
 }
