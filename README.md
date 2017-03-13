@@ -27,6 +27,8 @@ modules: [
 			updateInterval: 86400 * 1000, // How often do you want to fetch new praying time? (milliseconds)
 			animationSpeed: 2.5 * 1000, // Speed of the update animation. (milliseconds)
 			language: config.language,
+			showAdzanAlert: true,
+			alertTimer: 15000
 		}
 	}
 ]
