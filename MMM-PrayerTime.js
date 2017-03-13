@@ -12,7 +12,9 @@ Module.register("MMM-PrayerTime",{
     updateInterval: 86400 * 1000, // How often do you want to fetch new praying time? (milliseconds)
     animationSpeed: 2.5 * 1000, // Speed of the update animation. (milliseconds)
     language: config.language,
-    colored: false
+    colored: false,
+    showAdzanAlert: true,
+    alertTimer: 15000
 	},
 
 	getScripts: function() {
@@ -145,9 +147,12 @@ Module.register("MMM-PrayerTime",{
   },
 
   isAdzanNow: function() {
+    var self = this;
     var curTime = moment().format("HH:mm");
     if (this.arrAdzanTime.length > 0) {
       if (this.arrAdzanTime.includes(curTime)) {
+        if (self.config.showAdzanAlert)
+          this.sendNotification("SHOW_ALERT", {title: this.translate("ADZAN"), message: this.translate("ALERT_ADZAN_MSG"), timer: self.config.alertTimer});
         this.sendSocketNotification("PLAY_ADZAN", {});
       }
     }
@@ -265,6 +270,8 @@ Module.register("MMM-PrayerTime",{
     var self = this;
 		if (notification == "PRAYER_TIME") {
       if (payload.type == "PLAY_ADZAN") {
+        if (self.config.showAdzanAlert)
+          this.sendNotification("SHOW_ALERT", {title: this.translate("ADZAN"), message: this.translate("ALERT_ADZAN_MSG"), timer: self.config.alertTimer});
         this.sendSocketNotification("PLAY_ADZAN", payload);
       }
       if (payload.type == "UPDATE_PRAYINGTIME") {
