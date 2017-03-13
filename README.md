@@ -1,6 +1,9 @@
 # MMM-PrayerTime
 This an extension for the [MagicMirror](https://github.com/MichMich/MagicMirror). It will display prayer time (in local time) and also recite Adzan/Adhan. Your mirror will be your helpful assistant to do sholat on time.
 
+## Screenshot
+![Screenshot](https://raw.githubusercontent.com/slametps/MMM-PrayerTime/master/screenshot.png)
+
 ## Installation
 1. Navigate into your MagicMirror's `modules` folder and execute `https://github.com/slametps/MMM-PrayerTime.git`.
 
@@ -48,28 +51,28 @@ The following properties can be configured:
 			<td>1.0 (reserved for future use)</td>
 		</tr>
 		<tr>
-			<td><code>lat</code></td>
+			<td><code>lat</code><br>REQUIRED</td>
 			<td>latitute of your position (city)
 				<br>You can use google maps to get this info
 				<br><b>Default value:</b> <code>false</code>
 			</td>
 		</tr>
 		<tr>
-			<td><code>lon</code></td>
+			<td><code>lon</code><br>REQUIRED</td>
 			<td>longitude of your position (city)
 				<br>You can use google maps to get this info
 				<br><b>Default value:</b> <code>false</code>
 			</td>
 		</tr>
 		<tr>
-			<td><code>timezone</code></td>
+			<td><code>timezone</code><br>REQUIRED</td>
 			<td>Local timezone.
 				<br><b>Possible values:</b> refer to http://php.net/manual/en/timezones.php
 				<br><b>Default value:</b> <code>true</code>
 			</td>
 		</tr>
 		<tr>
-			<td><code>method</code></td>
+			<td><code>method</code><br>REQUIRED</td>
 			<td>method to identify various schools of thought about how to compute the timings
 				<br><b>Possible values:</b> <code>0-7</code> (0-Shia Ithna-Ashari, 1-University of Islamic Sciences,Karachi, 2-Islamic Society of North America (ISNA), 3-Muslim World League/MWL, 4-Umm al-Qura,Makkah, 5-Egyptian General Authority of Survey, 7-Institute of Geophysics, University of Tehran)
 				<br><b>Default value:</b> <code>5</code>
@@ -94,7 +97,7 @@ The following properties can be configured:
 			<td>Using internal update interval or triggered by MMM-ModuleScheduler to fetch and update new praying time? if <code>false</code>, add new schedule entry in MMM-ModuleScheduler:
 				<br><code>{notification: 'PRAYER_TIME', schedule: '1 0 * * *', payload: {type: 'UPDATE_PRAYINGTIME'}}</code>
 				<br><b>Possible values:</b> <code>true, false</code>
-				<br><b>Default value:</b> <code>true</code> (1 day)
+				<br><b>Default value:</b> <code>true</code>
 			</td>
 		</tr>
 		<tr>
@@ -105,7 +108,7 @@ The following properties can be configured:
 		</tr>
 		<tr>
 			<td><code>animationSpeed</code></td>
-			<td>Speed of the update animation. (Milliseconds)<br>
+			<td>Speed of the update animation. (milliseconds)<br>
 				<br><b>Possible values:</b><code>0</code> - <code>5000</code>
 				<br><b>Default value:</b> <code>2500</code> (2.5 seconds)
 			</td>
@@ -114,6 +117,20 @@ The following properties can be configured:
 			<td><code>language</code></td>
 			<td>module language. Can be different from MM.
 				<br><b>Default value:</b> <code>config.language</code>
+			</td>
+		</tr>
+		<tr>
+			<td><code>showAdzanAlert</code></td>
+			<td>Display alert when enterigng praying time?
+				<br><b>Possible values:</b> <code>true, false</code>
+				<br><b>Default value:</b> <code>true</code>
+			</td>
+		</tr>
+		<tr>
+			<td><code>alertTimer</code></td>
+			<td>How long alert will be displayed? (milliseconds)<br>
+				<br><b>Possible values:</b><code>0</code> - <code>60000</code>
+				<br><b>Default value:</b> <code>15000</code> (15 seconds)
 			</td>
 		</tr>
 	</tbody>
