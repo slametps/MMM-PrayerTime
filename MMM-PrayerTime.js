@@ -116,6 +116,8 @@ Module.register("MMM-PrayerTime",{
 				if (this.status === 200) {
           resultToday = JSON.parse(this.responseText);
           self.todaySchedule = resultToday.data.timings;
+          // debug/testing only
+          //self.todaySchedule = {"Fajr":"04:30", "Dhuhr":"12:00", "Asr":"16:14", "Maghrib":"18:00", "Isha":"19:00", "Imsak":"04:20"};
           nbRes++;
           if (nbRes == nbReq)
             self.processSchedule();
@@ -147,22 +149,28 @@ Module.register("MMM-PrayerTime",{
   },
 
   isAdzanNow: function() {
-    var self = this;
     var curTime = moment().format("HH:mm");
     var indexAdzan = -1;
-    if (self.arrTodaySchedule.length > 0)
+    //console.log(this.arrTodaySchedule);
+    if (this.arrTodaySchedule.length > 0)
     {
       function isAdzan(el, idx, arr) {
         return el[1] == curTime;
       }
-      indexAdzan = self.arrTodaySchedule.findIndex(isAdzan);
+      indexAdzan = this.arrTodaySchedule.findIndex(isAdzan);
+      //console.log("indexAdzan-"+indexAdzan);
 
       if (indexAdzan > -1) {
-        if (self.config.showAdzanAlert) {
-          var occasionNameUpper = (self.arrTodaySchedule[indexAdzan][0]).toUpperCase();
-          this.sendNotification("SHOW_ALERT", {title: this.translate("ADZAN"), message: this.translate("ALERT_ADZAN_MSG").replace("%OCCASION", this.translate(occasionNameUpper)), timer: self.config.alertTimer});
+        if (this.config.showAdzanAlert) {
+          var occasionNameUpper = (this.arrTodaySchedule[indexAdzan][0]).toUpperCase();
+          //console.log("occasionNameUpper-"+occasionNameUpper);
+          this.sendNotification("SHOW_ALERT", {title: this.translate("ADZAN"), message: this.translate("ALERT_ADZAN_MSG").replace("%OCCASION", this.translate(occasionNameUpper)), timer: this.config.alertTimer});
         }
-        if (self.config.playAdzan.findIndex((self.arrTodaySchedule[indexAdzan][0]).toLowerCase()) > -1) {
+        //console.log(this.config.playAdzan);
+        //console.log("this.arrTodaySchedule[indexAdzan][0]).toLowerCase()-"+(this.arrTodaySchedule[indexAdzan][0]).toLowerCase());
+        //console.log("this.config.playAdzan.findIndex((this.arrTodaySchedule[indexAdzan][0]).toLowerCase())-"+this.config.playAdzan.findIndex((this.arrTodaySchedule[indexAdzan][0]).toLowerCase()));
+        if (this.config.playAdzan.includes((this.arrTodaySchedule[indexAdzan][0]).toLowerCase())) {
+          //console.log("this.arrTodaySchedule[indexAdzan][0]).toUpperCase()-"+(this.arrTodaySchedule[indexAdzan][0]).toUpperCase());
           this.sendSocketNotification("PLAY_ADZAN", {occasion: (this.arrTodaySchedule[indexAdzan][0]).toUpperCase()});
         }
       }
