@@ -1,16 +1,16 @@
 {
-	"Fajr": "Fajr",
-	"Sunrise": "Sunrise",
-	"Dhuhr": "Dhuhr",
-	"Asr": "Asr",
-	"Sunset": "Sunset",
-	"Maghrib": "Maghrib",
-	"Isha": "Isha",
-	"Imsak": "Imsak",
-	"Midnight": "Midnight",
+	"FAJR": "Fajr",
+	"SUNRISE": "Sunrise",
+	"DHUHR": "Dhuhr",
+	"ASR": "Asr",
+	"SUNSET": "Sunset",
+	"MAGHRIB": "Maghrib",
+	"ISHA": "Isha",
+	"IMSAK": "Imsak",
+	"MIDNIGHT": "Midnight",
 
 	"ADZAN": "ADHAN",
-	"ALERT_ADZAN_MSG": "It's praying time. Let's Sholat!",
+	"ALERT_ADZAN_MSG": "It's praying time. Let's Sholat %OCCASION!",
 
 	"TODAY": "Today",
 	"TOMORROW": "Tomorrow"

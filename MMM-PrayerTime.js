@@ -149,11 +149,22 @@ Module.register("MMM-PrayerTime",{
   isAdzanNow: function() {
     var self = this;
     var curTime = moment().format("HH:mm");
-    if (this.arrAdzanTime.length > 0) {
-      if (this.arrAdzanTime.includes(curTime)) {
-        if (self.config.showAdzanAlert)
-          this.sendNotification("SHOW_ALERT", {title: this.translate("ADZAN"), message: this.translate("ALERT_ADZAN_MSG"), timer: self.config.alertTimer});
-        this.sendSocketNotification("PLAY_ADZAN", {});
+    var indexAdzan = -1;
+    if (self.arrTodaySchedule.length > 0)
+    {
+      function isAdzan(el, idx, arr) {
+        return el[1] == curTime;
+      }
+      indexAdzan = self.arrTodaySchedule.findIndex(isAdzan);
+
+      if (indexAdzan > -1) {
+        if (self.config.showAdzanAlert) {
+          var occasionNameUpper = (self.arrTodaySchedule[indexAdzan][0]).toUpperCase();
+          this.sendNotification("SHOW_ALERT", {title: this.translate("ADZAN"), message: this.translate("ALERT_ADZAN_MSG").replace("%OCCASION", this.translate(occasionNameUpper)), timer: self.config.alertTimer});
+        }
+        if (self.config.playAdzan.findIndex((self.arrTodaySchedule[indexAdzan][0]).toLowerCase()) > -1) {
+          this.sendSocketNotification("PLAY_ADZAN", {occasion: (this.arrTodaySchedule[indexAdzan][0]).toUpperCase()});
+        }
       }
     }
   },
@@ -241,7 +252,7 @@ Module.register("MMM-PrayerTime",{
         var occasionName = document.createElement("td");
         occasionName.className = "occasion-name bright light";
         //occasionName.innerHTML = this.translate(t);
-        occasionName.innerHTML = this.translate(this.arrTodaySchedule[t][0]);
+        occasionName.innerHTML = this.translate(this.arrTodaySchedule[t][0].toUpperCase());
         row.appendChild(occasionName);
 
         // today
@@ -267,12 +278,11 @@ Module.register("MMM-PrayerTime",{
 
 	notificationReceived: function(notification, payload, sender) {
 		Log.log(this.name + ": received notification : " + notification);
-    var self = this;
 		if (notification == "PRAYER_TIME") {
+      if (this.config.showAdzanAlert)
+        this.sendNotification("SHOW_ALERT", {title: this.translate("ADZAN"), message: this.translate("ALERT_ADZAN_MSG").replace("%OCCASION", this.translate("ASR")), timer: this.config.alertTimer});
       if (payload.type == "PLAY_ADZAN") {
-        if (self.config.showAdzanAlert)
-          this.sendNotification("SHOW_ALERT", {title: this.translate("ADZAN"), message: this.translate("ALERT_ADZAN_MSG"), timer: self.config.alertTimer});
-        this.sendSocketNotification("PLAY_ADZAN", payload);
+        this.sendSocketNotification("PLAY_ADZAN", {occasion: 'ASR'});
       }
       if (payload.type == "UPDATE_PRAYINGTIME") {
         this.updateSchedule(0);

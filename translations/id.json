@@ -1,16 +1,16 @@
 {
-	"Fajr": "Subuh",
-	"Sunrise": "Terbit",
-	"Dhuhr": "Dhuhur",
-	"Asr": "Ashar",
-	"Sunset": "Terbenam",
-	"Maghrib": "Maghrib",
-	"Isha": "Isya'",
-	"Imsak": "Imsak",
-	"Midnight": "Tengah Malam",
+	"FAJR": "Subuh",
+	"SUNRISE": "Terbit",
+	"DHUHR": "Dhuhur",
+	"ASR": "Ashar",
+	"SUNSET": "Terbenam",
+	"MAGHRIB": "Maghrib",
+	"ISHA": "Isya'",
+	"IMSAK": "Imsak",
+	"MIDNIGHT": "Tengah Malam",
 
 	"ADZAN": "ADZAN",
-	"ALERT_ADZAN_MSG": "Mari kita sholat!",
+	"ALERT_ADZAN_MSG": "Mari kita sholat %OCCASION!",
 
 	"TODAY": "Hari Ini",
 	"TOMORROW": "Besok"

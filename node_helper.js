@@ -18,8 +18,9 @@ module.exports = NodeHelper.create({
 	socketNotificationReceived: function(notification, payload) {
     console.log(this.name + " node helper received a socket notification: " + notification + " - Payload: " + payload);
     if (notification == "PLAY_ADZAN") {
+      var adzanCmd = '/usr/bin/omxplayer -o hdmi modules/MMM-PrayerTime/res/' + (payload.occasion && payload.occasion=="FAJR" ? 'adzan-fajr.mp3' : 'adzan.mp3') + ' &';
       async.parallel([
-        async.apply(exec, '/usr/bin/omxplayer -o hdmi modules/MMM-PrayerTime/res/adzan.mp3')
+        async.apply(exec, adzanCmd)
       ],
       function (err, res) {
       });
