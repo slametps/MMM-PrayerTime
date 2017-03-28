@@ -287,10 +287,11 @@ Module.register("MMM-PrayerTime",{
 	notificationReceived: function(notification, payload, sender) {
 		Log.log(this.name + ": received notification : " + notification);
 		if (notification == "PRAYER_TIME") {
-      if (this.config.showAdzanAlert)
-        this.sendNotification("SHOW_ALERT", {title: this.translate("ADZAN"), message: this.translate("ALERT_ADZAN_MSG").replace("%OCCASION", this.translate("ASR")), timer: this.config.alertTimer});
       if (payload.type == "PLAY_ADZAN") {
         this.sendSocketNotification("PLAY_ADZAN", {occasion: 'ASR'});
+        if (this.config.showAdzanAlert)
+          this.sendNotification("SHOW_ALERT", {title: this.translate("ADZAN"), message: this.translate("ALERT_ADZAN_MSG").replace("%OCCASION", this.translate("ASR")), timer: this.config.alertTimer});
+
       }
       if (payload.type == "UPDATE_PRAYINGTIME") {
         this.updateSchedule(0);
