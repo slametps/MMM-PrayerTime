@@ -161,15 +161,15 @@ Module.register("MMM-PrayerTime",{
       //console.log("indexAdzan-"+indexAdzan);
 
       if (indexAdzan > -1) {
-        if (this.config.showAdzanAlert) {
-          var occasionNameUpper = (this.arrTodaySchedule[indexAdzan][0]).toUpperCase();
-          //console.log("occasionNameUpper-"+occasionNameUpper);
-          this.sendNotification("SHOW_ALERT", {title: this.translate("ADZAN"), message: this.translate("ALERT_ADZAN_MSG").replace("%OCCASION", this.translate(occasionNameUpper)), timer: this.config.alertTimer});
-        }
         //console.log(this.config.playAdzan);
         //console.log("this.arrTodaySchedule[indexAdzan][0]).toLowerCase()-"+(this.arrTodaySchedule[indexAdzan][0]).toLowerCase());
         //console.log("this.config.playAdzan.findIndex((this.arrTodaySchedule[indexAdzan][0]).toLowerCase())-"+this.config.playAdzan.findIndex((this.arrTodaySchedule[indexAdzan][0]).toLowerCase()));
         if (this.config.playAdzan.includes((this.arrTodaySchedule[indexAdzan][0]).toLowerCase())) {
+          if (this.config.showAdzanAlert) {
+            var occasionNameUpper = (this.arrTodaySchedule[indexAdzan][0]).toUpperCase();
+            //console.log("occasionNameUpper-"+occasionNameUpper);
+            this.sendNotification("SHOW_ALERT", {title: this.translate("ADZAN"), message: this.translate("ALERT_ADZAN_MSG").replace("%OCCASION", this.translate(occasionNameUpper)), timer: this.config.alertTimer});
+          }
           //console.log("this.arrTodaySchedule[indexAdzan][0]).toUpperCase()-"+(this.arrTodaySchedule[indexAdzan][0]).toUpperCase());
           this.sendSocketNotification("PLAY_ADZAN", {occasion: (this.arrTodaySchedule[indexAdzan][0]).toUpperCase()});
         }
