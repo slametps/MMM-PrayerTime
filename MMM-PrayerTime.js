@@ -149,13 +149,13 @@ Module.register("MMM-PrayerTime",{
   },
 
   isAdzanNow: function() {
-    var curTime = moment().format("HH:mm");
+    var curTime = moment().format("HH:mm:ss");
     var indexAdzan = -1;
     //console.log(this.arrTodaySchedule);
     if (this.arrTodaySchedule.length > 0)
     {
       function isAdzan(el, idx, arr) {
-        return el[1] == curTime;
+        return (el[1] + ':00') == curTime;
       }
       indexAdzan = this.arrTodaySchedule.findIndex(isAdzan);
       //console.log("indexAdzan-"+indexAdzan);
@@ -206,7 +206,7 @@ Module.register("MMM-PrayerTime",{
     self.isAdzanNow();
     setInterval(function() {
       self.isAdzanNow();
-    }, 60*1000);
+    }, 1000);
 	},
 
 	// Override dom generator.
