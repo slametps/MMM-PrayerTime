@@ -168,7 +168,7 @@ Module.register("MMM-PrayerTime",{
           if (this.config.showAdzanAlert) {
             var occasionNameUpper = (this.arrTodaySchedule[indexAdzan][0]).toUpperCase();
             //console.log("occasionNameUpper-"+occasionNameUpper);
-            this.sendNotification("SHOW_ALERT", {title: this.translate("ADZAN"), message: this.translate("ALERT_ADZAN_MSG").replace("%OCCASION", this.translate(occasionNameUpper)), timer: this.config.alertTimer});
+            this.sendNotification("SHOW_ALERT", {title: this.translate("ADZAN"), imageFA: 'bullhorn', message: this.translate("ALERT_ADZAN_MSG").replace("%OCCASION", this.translate(occasionNameUpper)), timer: this.config.alertTimer});
           }
           //console.log("this.arrTodaySchedule[indexAdzan][0]).toUpperCase()-"+(this.arrTodaySchedule[indexAdzan][0]).toUpperCase());
           this.sendSocketNotification("PLAY_ADZAN", {occasion: (this.arrTodaySchedule[indexAdzan][0]).toUpperCase()});
