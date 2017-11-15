@@ -128,7 +128,7 @@ The following properties can be configured:
 		<tr>
 			<td><code>language</code></td>
 			<td>module language. Can be different from MM.
-				<br><b>Default value:</b> <code>config.language</code>
+				<br><b>Default value:</b> <code>config.language</code> or <code>'en'</code>
 			</td>
 		</tr>
 		<tr>

@@ -13,5 +13,8 @@
 	"ALERT_ADZAN_MSG": "It's praying time. Let's Sholat %OCCASION!",
 
 	"TODAY": "Today",
-	"TOMORROW": "Tomorrow"
+	"TOMORROW": "Tomorrow",
+
+	"TXT_PRAYERTIME": "PRAYER TIME",
+	"TXT_PRAYERTIME_DESC": "display prayer time for today and tomorrow"
 }

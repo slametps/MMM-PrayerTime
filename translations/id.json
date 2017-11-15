@@ -13,5 +13,8 @@
 	"ALERT_ADZAN_MSG": "Mari kita sholat %OCCASION!",
 
 	"TODAY": "Hari Ini",
-	"TOMORROW": "Besok"
+	"TOMORROW": "Besok",
+
+	"TXT_PRAYERTIME": "WAKTU SHOLAT",
+	"TXT_PRAYERTIME_DESC": "menampilkan waktu sholat hari ini dan esok hari"
 }

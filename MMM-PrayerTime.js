@@ -34,6 +34,29 @@ Module.register("MMM-PrayerTime",{
     };
 	},
 
+  getCommands: function(commander) {
+    commander.add({
+      command: 'prayertime',
+      description: this.translate("TXT_PRAYERTIME_DESC"),
+      callback: 'cmd_prayertime'
+    })
+  },
+
+  cmd_prayertime: function(command, handler) {
+    var text = "";
+    text += "*" + this.translate("TXT_PRAYERTIME") + "*\n";
+    text += "*" + this.translate("TODAY") + "*\n";
+    for (var t in this.arrTodaySchedule) {
+      text += "*" + this.translate(this.arrTodaySchedule[t][0].toUpperCase()) + ":* `" + (this.config.timeFormat == 12 ? moment(this.arrTodaySchedule[t][1], ["HH:mm"]).format("h:mm A") : this.arrTodaySchedule[t][1]) + "`\n";
+    }
+    text += "\n*" + this.translate("TOMORROW") + "*\n";
+    for (var t in this.arrNextdaySchedule) {
+      text += "*" + this.translate(this.arrNextdaySchedule[t][0].toUpperCase()) + ":* `" + (this.config.timeFormat == 12 ? moment(this.arrNextdaySchedule[t][1], ["HH:mm"]).format("h:mm A") : this.arrNextdaySchedule[t][1]) + "`\n";
+    }
+    handler.reply("TEXT", text, {parse_mode:'Markdown'});
+  },
+
+
   /* getParams
 	 * Generates an url with api parameters based on the config.
 	 *
