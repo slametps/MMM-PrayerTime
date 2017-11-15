@@ -22,6 +22,7 @@ modules: [
 			lat: false, // latitude of your position (city)
 			lon: false, // longitude of your position (city)
 			timezone: false, // please refer to http://php.net/manual/en/timezones.php
+			timeFormat: 24,
 			method: 5,
 			playAdzan: ['fajr', 'dhuhr', 'asr', 'maghrib', 'isha'],
 			notDisplayed: ['midnight', 'sunset'],
@@ -73,6 +74,13 @@ The following properties can be configured:
 			<td>Local timezone.
 				<br><b>Possible values:</b> refer to http://php.net/manual/en/timezones.php
 				<br><b>Default value:</b> <code>true</code>
+			</td>
+		</tr>
+		<tr>
+			<td><code>timeFormat</code>
+			<td>12/24 time-format.
+				<br><b>Possible values:</b> <code>12, 24</code>
+				<br><b>Default value:</b> <code>config.timeFormat or 24</code>
 			</td>
 		</tr>
 		<tr>

@@ -5,13 +5,14 @@ Module.register("MMM-PrayerTime",{
     lat: false,
     lon: false,
     timezone: false,
+    timeFormat: config.timeFormat || 24,
     method: 5, // method of timing computation {0-Shia Ithna-Ashari,1-University of Islamic Sciences, Karachi,2-Islamic Society of North America (ISNA),3-Muslim World League (MWL),4-Umm al-Qura, Makkah,5-Egyptian General Authority of Survey,7-Institute of Geophysics, University of Tehran}
     playAdzan: ['fajr', 'dhuhr', 'asr', 'maghrib', 'isha'],
     notDisplayed: ['midnight', 'sunset'],
     useUpdateInterval: true,
     updateInterval: 86400 * 1000, // How often do you want to fetch new praying time? (milliseconds)
     animationSpeed: 2.5 * 1000, // Speed of the update animation. (milliseconds)
-    language: config.language,
+    language: config.language || "en",
     colored: false,
     showAdzanAlert: true,
     alertTimer: 15000
@@ -117,7 +118,7 @@ Module.register("MMM-PrayerTime",{
           resultToday = JSON.parse(this.responseText);
           self.todaySchedule = resultToday.data.timings;
           // debug/testing only
-          //self.todaySchedule = {"Fajr":"04:30", "Dhuhr":"12:00", "Asr":"16:14", "Maghrib":"18:00", "Isha":"19:00", "Imsak":"04:20"};
+          //self.todaySchedule = {"Fajr":"04:30", "Dhuhr":"12:00", "Asr":"16:14", "Maghrib":"18:00", "Isha":"20:50", "Imsak":"04:20"};
           nbRes++;
           if (nbRes == nbReq)
             self.processSchedule();
@@ -267,14 +268,14 @@ Module.register("MMM-PrayerTime",{
         var occasionTime = document.createElement("td");
         occasionTime.className = "occasion-time bright light";
         //occasionTime.innerHTML = this.todaySchedule[t];
-        occasionTime.innerHTML = this.arrTodaySchedule[t][1];
+        occasionTime.innerHTML = (this.config.timeFormat == 12 ? moment(this.arrTodaySchedule[t][1], ["HH:mm"]).format("h:mm A") : this.arrTodaySchedule[t][1]);
         row.appendChild(occasionTime);
 
         // nextday
         var occasionTimeNext = document.createElement("td");
         occasionTimeNext.className = "occasion-time bright light";
         //occasionTimeNext.innerHTML = this.todaySchedule[t];
-        occasionTimeNext.innerHTML = this.arrNextdaySchedule[t][1];
+        occasionTimeNext.innerHTML = (this.config.timeFormat == 12 ? moment(this.arrNextdaySchedule[t][1], ["HH:mm"]).format("h:mm A") : this.arrNextdaySchedule[t][1]);
         row.appendChild(occasionTimeNext);
       }
 
