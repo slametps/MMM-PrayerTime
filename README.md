@@ -5,6 +5,7 @@ This an extension for the [MagicMirror](https://github.com/MichMich/MagicMirror)
 ![Screenshot](https://raw.githubusercontent.com/slametps/MMM-PrayerTime/master/screenshot.png)
 ![Screenshot](https://raw.githubusercontent.com/slametps/MMM-PrayerTime/master/screenshot-alert.png)
 ![Screenshot](https://raw.githubusercontent.com/slametps/MMM-PrayerTime/master/screenshot2.jpg)
+![Screenshot](https://raw.githubusercontent.com/slametps/MMM-PrayerTime/master/screenshot-telegram.jpg)
 
 ## Installation
 1. Navigate into your MagicMirror's `modules` folder and execute `https://github.com/slametps/MMM-PrayerTime.git`.
