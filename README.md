@@ -151,8 +151,9 @@ The following properties can be configured:
 
 ## Dependencies
 - Access to the internet to download praying time from http://api.aladhan.com
-- [MMM-ModuleScheduler](https://github.com/ianperrin/MMM-ModuleScheduler)
+- [MMM-ModuleScheduler](https://github.com/ianperrin/MMM-ModuleScheduler). OPTIONAL.
 - omxplayer (<code>sudo apt-get install omxplayer</code>)
+- [MMM-TelegramBot](https://github.com/eouia/MMM-TelegramBot). OPTIONAL.
 
 The MIT License (MIT)
 =====================
