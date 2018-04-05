@@ -8,7 +8,7 @@ This an extension for the [MagicMirror](https://github.com/MichMich/MagicMirror)
 ![Screenshot](https://raw.githubusercontent.com/slametps/MMM-PrayerTime/master/screenshot-telegram.png)
 
 ## Installation
-1. Navigate into your MagicMirror's `modules` folder and execute `https://github.com/slametps/MMM-PrayerTime.git`.
+1. Navigate into your MagicMirror's `modules` folder and execute `git clone https://github.com/slametps/MMM-PrayerTime.git`
 
 ## Using the module
 
