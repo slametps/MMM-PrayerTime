@@ -21,7 +21,7 @@ modules: [
 		module: 'MMM-PrayerTime',
 		position: 'top_left',	// This can be any of the regions. Best result is in the top_left/top_right.
 		config: {
-			apiVersion: '1.0' // please, leave unchanged. reserved for future use.
+			apiVersion: '1.0', // please, leave unchanged. reserved for future use.
 			lat: false, // latitude of your position (city)
 			lon: false, // longitude of your position (city)
 			timezone: false, // please refer to http://php.net/manual/en/timezones.php
