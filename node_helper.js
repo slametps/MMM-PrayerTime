@@ -18,7 +18,16 @@ module.exports = NodeHelper.create({
 	socketNotificationReceived: function(notification, payload) {
     console.log(this.name + " node helper received a socket notification: " + notification + " - Payload: " + payload);
     if (notification == "PLAY_ADZAN") {
-      var adzanCmd = '/usr/bin/omxplayer -o hdmi modules/MMM-PrayerTime/res/' + (payload.occasion && payload.occasion=="FAJR" ? 'adzan-fajr.mp3' : 'adzan.mp3') + ' &';
+      var adzanSound = 'adzan.mp3';
+      if (payload.occasion) {
+        if (payload.occasion=="FAJR") {
+          adzanSound = 'adzan-fajr.mp3';
+        }
+        else if (payload.occasion=="IMSAK") {
+          adzanSound = 'imsak.mp3';
+        }
+      }
+      var adzanCmd = '/usr/bin/omxplayer -o hdmi modules/MMM-PrayerTime/res/' + adzanSound + ' &';
       async.parallel([
         async.apply(exec, adzanCmd)
       ],

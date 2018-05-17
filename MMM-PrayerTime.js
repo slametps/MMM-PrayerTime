@@ -191,8 +191,14 @@ Module.register("MMM-PrayerTime",{
         if (this.config.playAdzan.includes((this.arrTodaySchedule[indexAdzan][0]).toLowerCase())) {
           if (this.config.showAdzanAlert) {
             var occasionNameUpper = (this.arrTodaySchedule[indexAdzan][0]).toUpperCase();
+            var alertMsg = "ALERT_ADZAN_MSG";
+            var adzanImsak = "ADZAN";
             //console.log("occasionNameUpper-"+occasionNameUpper);
-            this.sendNotification("SHOW_ALERT", {title: this.translate("ADZAN"), imageFA: 'bullhorn', message: this.translate("ALERT_ADZAN_MSG").replace("%OCCASION", this.translate(occasionNameUpper)), timer: this.config.alertTimer});
+            if (occasionNameUpper == "IMSAK") {
+              alertMsg = "ALERT_IMSAK_MSG";
+              adzanImsak = "IMSAK";
+            }
+            this.sendNotification("SHOW_ALERT", {title: this.translate(adzanImsak).toUpperCase(), imageFA: 'bullhorn', message: this.translate(alertMsg).replace("%OCCASION", this.translate(occasionNameUpper)), timer: this.config.alertTimer});
           }
           //console.log("this.arrTodaySchedule[indexAdzan][0]).toUpperCase()-"+(this.arrTodaySchedule[indexAdzan][0]).toUpperCase());
           this.sendSocketNotification("PLAY_ADZAN", {occasion: (this.arrTodaySchedule[indexAdzan][0]).toUpperCase()});
