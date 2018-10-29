@@ -30,7 +30,8 @@ Module.register("MMM-PrayerTime",{
 	getTranslations: function() {
     return {
       'en': 'translations/en.json',
-      'id': 'translations/id.json'
+      'id': 'translations/id.json',
+      'ar': 'translations/ar.json'
     };
 	},
 
