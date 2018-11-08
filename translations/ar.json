@@ -10,7 +10,7 @@
 	"MIDNIGHT": "منتصف الليل",
 
 	"ADZAN": "الاذان",
-	"ALERT_ADZAN_MSG": "!حان الان وقت الصلاة",
+	"ALERT_ADZAN_MSG": "  حان الان وقت صلاة %OCCASION",
 	"ALERT_IMSAK_MSG": "!حان الآن وقت الإمساك",
 
 	"TODAY": "اليوم",
