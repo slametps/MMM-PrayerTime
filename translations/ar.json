@@ -1,0 +1,21 @@
+{
+	"FAJR": "الفجر",
+	"SUNRISE": "الشروق",
+	"DHUHR": "الظهر",
+	"ASR": "العصر",
+	"SUNSET": "الغروب",
+	"MAGHRIB": "المغرب",
+	"ISHA": "العشاء",
+	"IMSAK": "الامساك",
+	"MIDNIGHT": "منتصف الليل",
+
+	"ADZAN": "الاذان",
+	"ALERT_ADZAN_MSG": "  حان الان وقت صلاة %OCCASION",
+	"ALERT_IMSAK_MSG": "!حان الآن وقت الإمساك",
+
+	"TODAY": "اليوم",
+	"TOMORROW": "غدا",
+
+	"TXT_PRAYERTIME": "مواقيت الصلاة",
+	"TXT_PRAYERTIME_DESC": "مواقيت الصلاة لله رب العالمين"
+}
