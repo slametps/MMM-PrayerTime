@@ -34,6 +34,7 @@ modules: [
 			animationSpeed: 2.5 * 1000, // Speed of the update animation. (milliseconds)
 			language: config.language,
 			showAdzanAlert: true,
+			showTomorrow: true,
 			alertTimer: 15000
 		}
 	}
@@ -137,6 +138,13 @@ The following properties can be configured:
 		<tr>
 			<td><code>showAdzanAlert</code></td>
 			<td>Display alert when enterigng praying time?
+				<br><b>Possible values:</b> <code>true, false</code>
+				<br><b>Default value:</b> <code>true</code>
+			</td>
+		</tr>
+		<tr>
+			<td><code>showTomorrow</code></td>
+			<td>Display tomorrow praying time?
 				<br><b>Possible values:</b> <code>true, false</code>
 				<br><b>Default value:</b> <code>true</code>
 			</td>

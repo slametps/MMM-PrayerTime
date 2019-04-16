@@ -15,6 +15,7 @@ Module.register("MMM-PrayerTime",{
     language: config.language || "en",
     colored: false,
     showAdzanAlert: true,
+    showTomorrow: true,
     alertTimer: 15000
 	},
 
@@ -271,12 +272,14 @@ Module.register("MMM-PrayerTime",{
       occasionTime.innerHTML = this.translate('TODAY');
       row.appendChild(occasionTime);
 
-      // nextday
-      var occasionTimeNext = document.createElement("td");
-      occasionTimeNext.className = "occasion-time bright light";
-      //occasionTimeNext.innerHTML = this.todaySchedule[t];
-      occasionTimeNext.innerHTML = this.translate('TOMORROW');
-      row.appendChild(occasionTimeNext);
+      if (this.config.showTomorrow) {
+        // nextday
+        var occasionTimeNext = document.createElement("td");
+        occasionTimeNext.className = "occasion-time bright light";
+        //occasionTimeNext.innerHTML = this.todaySchedule[t];
+        occasionTimeNext.innerHTML = this.translate('TOMORROW');
+        row.appendChild(occasionTimeNext);
+      }
 
       //for (var i = 0, count = this.todaySchedule.length; i < count; i++) {
       //for (t in this.todaySchedule)
@@ -301,12 +304,14 @@ Module.register("MMM-PrayerTime",{
         occasionTime.innerHTML = (this.config.timeFormat == 12 ? moment(this.arrTodaySchedule[t][1], ["HH:mm"]).format("h:mm A") : this.arrTodaySchedule[t][1]);
         row.appendChild(occasionTime);
 
-        // nextday
-        var occasionTimeNext = document.createElement("td");
-        occasionTimeNext.className = "occasion-time bright light";
-        //occasionTimeNext.innerHTML = this.todaySchedule[t];
-        occasionTimeNext.innerHTML = (this.config.timeFormat == 12 ? moment(this.arrNextdaySchedule[t][1], ["HH:mm"]).format("h:mm A") : this.arrNextdaySchedule[t][1]);
-        row.appendChild(occasionTimeNext);
+        if (this.config.showTomorrow) {
+          // nextday
+          var occasionTimeNext = document.createElement("td");
+          occasionTimeNext.className = "occasion-time bright light";
+          //occasionTimeNext.innerHTML = this.todaySchedule[t];
+          occasionTimeNext.innerHTML = (this.config.timeFormat == 12 ? moment(this.arrNextdaySchedule[t][1], ["HH:mm"]).format("h:mm A") : this.arrNextdaySchedule[t][1]);
+          row.appendChild(occasionTimeNext);
+        }
       }
 
       wrapper.appendChild(table);
