@@ -30,11 +30,12 @@ Module.register("MMM-PrayerTime",{
 
   // Define required translations.
 	getTranslations: function() {
-    return {
-      'en': 'translations/en.json',
-      'id': 'translations/id.json',
-      'ar': 'translations/ar.json'
-    };
+	return {
+		'en': 'translations/en.json',
+		'id': 'translations/id.json',
+		'ar': 'translations/ar.json',
+		'fr': 'translations/fr.json'
+	};
 	},
 
   getCommands: function(commander) {
