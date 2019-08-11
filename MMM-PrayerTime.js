@@ -2,21 +2,22 @@ Module.register("MMM-PrayerTime",{
 	// Default module config.
 	defaults: {
 		apiVersion: '1.0',
-    lat: false,
-    lon: false,
-    timezone: false,
-    timeFormat: config.timeFormat || 24,
-    method: 5, // method of timing computation {0-Shia Ithna-Ashari,1-University of Islamic Sciences, Karachi,2-Islamic Society of North America (ISNA),3-Muslim World League (MWL),4-Umm al-Qura, Makkah,5-Egyptian General Authority of Survey,7-Institute of Geophysics, University of Tehran}
-    playAdzan: ['fajr', 'dhuhr', 'asr', 'maghrib', 'isha'],
-    notDisplayed: ['midnight', 'sunset'],
-    useUpdateInterval: true,
-    updateInterval: 86400 * 1000, // How often do you want to fetch new praying time? (milliseconds)
-    animationSpeed: 2.5 * 1000, // Speed of the update animation. (milliseconds)
-    language: config.language || "en",
-    colored: false,
-    showAdzanAlert: true,
-    showTomorrow: true,
-    alertTimer: 15000
+		lat: false,
+		lon: false,
+		timezone: false,
+		timeFormat: config.timeFormat || 24,
+		method: 5, // method of timing computation {0-Shia Ithna-Ashari,1-University of Islamic Sciences, Karachi,2-Islamic Society of North America (ISNA),3-Muslim World League (MWL),4-Umm al-Qura, Makkah,5-Egyptian General Authority of Survey,7-Institute of Geophysics, University of Tehran}
+		playAdzan: ['fajr', 'dhuhr', 'asr', 'maghrib', 'isha'],
+		notDisplayed: ['midnight', 'sunset'],
+		useUpdateInterval: true,
+		updateInterval: 86400 * 1000, // How often do you want to fetch new praying time? (milliseconds)
+		animationSpeed: 2.5 * 1000, // Speed of the update animation. (milliseconds)
+		language: config.language || "en",
+		colored: false,
+		showAdzanAlert: true,
+		showTomorrow: true,
+		alertTimer: 15000,
+		methodSettings: false,
 	},
 
 	getScripts: function() {
@@ -69,15 +70,18 @@ Module.register("MMM-PrayerTime",{
 		if(this.config.lat) {
 			params += "latitude=" + this.config.lat;
 		}
-    if (this.config.lon) {
+		if (this.config.lon) {
 			params += "&longitude=" + this.config.lon;
 		}
-    if (this.config.timezone) {
+		if (this.config.timezone) {
 			params += "&timezonestring=" + this.config.timezone;
-    }
+		}
 		if (this.config.method) {
 			params += "&method=" + this.config.method;
-    }
+		}
+		if (this.config.methodSettings) {
+                        params += "&methodSettings=" + encodeURI(this.config.methodSettings);
+                }
 
 		return params;
 	},
