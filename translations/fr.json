@@ -16,6 +16,6 @@
 	"TODAY": "Aujourd'hui",
 	"TOMORROW": "Demain",
 
-	"TXT_PRAYERTIME": "TEMPS DE PRIÈRE",
-	"TXT_PRAYERTIME_DESC": "afficher l'heure de la prière pour aujourd'hui et demain"
+	"TXT_PRAYERTIME": "HORAIRE DE PRIÈRES",
+	"TXT_PRAYERTIME_DESC": "Afficher l'horaire de prières pour aujourd'hui et demain"
 }
