@@ -158,7 +158,8 @@ The following properties can be configured:
 		</tr>
                 <tr>
                         <td><code>methodSettings</code></td>
-                        <td>Create your own calculation method,The methodSettings parameter accepts comma separated values in the following order: <code>FajrAngle,MaghribAngleOrMinsAfterSunset,IshaAngleOrMinsAfterSunset</code><br>
+                        <td>Create your own calculation method,
+				<br>The methodSettings parameter accepts comma separated values in the following order: <code>FajrAngle,MaghribAngleOrMinsAfterSunset,IshaAngleOrMinsAfterSunset</code><br>
                                 <br>Refer to https://aladhan.com/calculation-methods
 				<br><b>Method option must be:</b> 99
                                 <br><b>Example value:</b> <code>15,null,12</code>
