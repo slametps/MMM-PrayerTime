@@ -34,7 +34,9 @@ Module.register("MMM-PrayerTime",{
 		'en': 'translations/en.json',
 		'id': 'translations/id.json',
 		'ar': 'translations/ar.json',
-		'fr': 'translations/fr.json'
+		'fr': 'translations/fr.json',
+		'de': 'translations/de.json',
+		'bn': 'translations/bn.json'
 	};
 	},
 
