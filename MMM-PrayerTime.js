@@ -7,6 +7,7 @@ Module.register("MMM-PrayerTime",{
     timezone: false,
     timeFormat: config.timeFormat || 24,
     method: 5, // method of timing computation {0-Shia Ithna-Ashari,1-University of Islamic Sciences, Karachi,2-Islamic Society of North America (ISNA),3-Muslim World League (MWL),4-Umm al-Qura, Makkah,5-Egyptian General Authority of Survey,7-Institute of Geophysics, University of Tehran}
+    methodSettings: false,
     playAdzan: ['fajr', 'dhuhr', 'asr', 'maghrib', 'isha'],
     notDisplayed: ['midnight', 'sunset'],
     useUpdateInterval: true,
@@ -33,7 +34,10 @@ Module.register("MMM-PrayerTime",{
     return {
       'en': 'translations/en.json',
       'id': 'translations/id.json',
-      'ar': 'translations/ar.json'
+      'ar': 'translations/ar.json',
+      'fr': 'translations/fr.json',
+      'de': 'translations/de.json',
+      'bn': 'translations/bn.json'
     };
 	},
 
@@ -78,6 +82,9 @@ Module.register("MMM-PrayerTime",{
     }
 		if (this.config.method) {
 			params += "&method=" + this.config.method;
+    }
+    if (this.config.methodSettings) {
+      params += "&methodSettings=" + encodeURI(this.config.methodSettings);
     }
 
 		return params;
