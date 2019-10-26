@@ -27,7 +27,7 @@ module.exports = NodeHelper.create({
           adzanSound = 'imsak.mp3';
         }
       }
-      var adzanCmd = '/usr/bin/omxplayer -o hdmi modules/MMM-PrayerTime/res/' + adzanSound + ' &';
+      var adzanCmd = '/usr/bin/omxplayer -o both modules/MMM-PrayerTime/res/' + adzanSound + ' &';
       async.parallel([
         async.apply(exec, adzanCmd)
       ],
