@@ -35,6 +35,7 @@ modules: [
 			language: config.language,
 			showAdzanAlert: true,
 			showTomorrow: true,
+			vertical: true, // set false for horizontal view
 			alertTimer: 15000
 		}
 	}
@@ -145,6 +146,13 @@ The following properties can be configured:
 		<tr>
 			<td><code>showTomorrow</code></td>
 			<td>Display tomorrow praying time?
+				<br><b>Possible values:</b> <code>true, false</code>
+				<br><b>Default value:</b> <code>true</code>
+			</td>
+		</tr>
+		<tr>
+			<td><code>vertical</code></td>
+			<td>Display vertically?
 				<br><b>Possible values:</b> <code>true, false</code>
 				<br><b>Default value:</b> <code>true</code>
 			</td>
