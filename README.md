@@ -35,6 +35,7 @@ modules: [
 			language: config.language,
 			showAdzanAlert: true,
 			showTomorrow: true,
+			vertical: true, // set false for horizontal view
 			alertTimer: 15000
 		}
 	}
@@ -94,6 +95,16 @@ The following properties can be configured:
 				<br><b>Default value:</b> <code>5</code>
 			</td>
 		</tr>
+                <tr>
+                        <td><code>methodSettings</code></td>
+                        <td>Create your own calculation method,
+				<br>The methodSettings parameter accepts comma separated values in the following order: <code>FajrAngle,MaghribAngleOrMinsAfterSunset,IshaAngleOrMinsAfterSunset</code>
+                                <br>Refer to https://aladhan.com/calculation-methods
+				<br><b>Method option must be:</b> 99
+                                <br><b>Example value:</b> <code>15,null,12</code>
+                                <br><b>Default value:</b> <code>false</code>
+                        </td>
+                </tr>
 		<tr>
 			<td><code>playAdzan</code></td>
 			<td>List/array of the prayer time name to play Adzan.
@@ -150,33 +161,30 @@ The following properties can be configured:
 			</td>
 		</tr>
 		<tr>
+			<td><code>vertical</code></td>
+			<td>Display vertically?
+				<br><b>Possible values:</b> <code>true, false</code>
+				<br><b>Default value:</b> <code>true</code>
+			</td>
+		</tr>
+		<tr>
 			<td><code>alertTimer</code></td>
 			<td>How long alert will be displayed? (milliseconds)<br>
 				<br><b>Possible values:</b><code>0</code> - <code>60000</code>
 				<br><b>Default value:</b> <code>15000</code> (15 seconds)
 			</td>
 		</tr>
-                <tr>
-                        <td><code>methodSettings</code></td>
-                        <td>Create your own calculation method,
-				<br>The methodSettings parameter accepts comma separated values in the following order: <code>FajrAngle,MaghribAngleOrMinsAfterSunset,IshaAngleOrMinsAfterSunset</code>
-                                <br>Refer to https://aladhan.com/calculation-methods
-				<br><b>Method option must be:</b> 99
-                                <br><b>Example value:</b> <code>15,null,12</code>
-                                <br><b>Default value:</b> <code>false</code>
-                        </td>
-                </tr>
-                <tr>
-                        <td><code>telegramAlert</code></td>
-                        <td>Send a notification to your Telegram Bot,
+		<tr>
+			<td><code>telegramAlert</code></td>
+			<td>Send a notification to your Telegram Bot,
 				<br>The telegramAlert is a multidimensional array: <code>[ Status, [["chat_id_1", "chat_id_2", ...], 'bot_token'] ]</code>
-                                <br>Refer to https://core.telegram.org/bots/api#sendmessage
-                                <br>Refer to https://www.shellhacks.com/telegram-api-send-message-personal-notification-bot/
+				<br>Refer to https://core.telegram.org/bots/api#sendmessage
+				<br>Refer to https://www.shellhacks.com/telegram-api-send-message-personal-notification-bot/
 				<br><b>Method option must be:</b> 99
-                                <br><b>Example value:</b> <code>[ true, [["123456789", "987654321", ...], '4334584950:AAEPmjlh94N62Lv9jGWEgOftlxxAfMhB1gs'] ]</code>
-                                <br><b>Default value:</b> <code>[false]</code>
-                        </td>
-                </tr>
+				<br><b>Example value:</b> <code>[ true, [["123456789", "987654321", ...], '4334584950:AAEPmjlh94N62Lv9jGWEgOftlxxAfMhB1gs'] ]</code>
+				<br><b>Default value:</b> <code>[false]</code>
+			</td>
+		</tr>
 	</tbody>
 </table>
 

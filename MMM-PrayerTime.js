@@ -1,24 +1,25 @@
 Module.register("MMM-PrayerTime",{
 	// Default module config.
 	defaults: {
-		apiVersion: '1.0',
-		lat: false,
-		lon: false,
-		timezone: false,
-		timeFormat: config.timeFormat || 24,
-		method: 5, // method of timing computation {0-Shia Ithna-Ashari,1-University of Islamic Sciences, Karachi,2-Islamic Society of North America (ISNA),3-Muslim World League (MWL),4-Umm al-Qura, Makkah,5-Egyptian General Authority of Survey,7-Institute of Geophysics, University of Tehran}
-		playAdzan: ['fajr', 'dhuhr', 'asr', 'maghrib', 'isha'],
-		notDisplayed: ['midnight', 'sunset'],
-		useUpdateInterval: true,
-		updateInterval: 86400 * 1000, // How often do you want to fetch new praying time? (milliseconds)
-		animationSpeed: 2.5 * 1000, // Speed of the update animation. (milliseconds)
-		language: config.language || "en",
-		colored: false,
-		showAdzanAlert: true,
-		showTomorrow: true,
-		alertTimer: 15000,
-		methodSettings: false,
-		telegramAlert: [ false ], // [ Status, [["chat_id_1", "chat_id_2", ...], 'bot_token'] ]
+    apiVersion: '1.0',
+    lat: false,
+    lon: false,
+    timezone: false,
+    timeFormat: config.timeFormat || 24,
+    method: 5, // method of timing computation {0-Shia Ithna-Ashari,1-University of Islamic Sciences, Karachi,2-Islamic Society of North America (ISNA),3-Muslim World League (MWL),4-Umm al-Qura, Makkah,5-Egyptian General Authority of Survey,7-Institute of Geophysics, University of Tehran}
+    methodSettings: false,
+    playAdzan: ['fajr', 'dhuhr', 'asr', 'maghrib', 'isha'],
+    notDisplayed: ['midnight', 'sunset'],
+    useUpdateInterval: true,
+    updateInterval: 86400 * 1000, // How often do you want to fetch new praying time? (milliseconds)
+    animationSpeed: 2.5 * 1000, // Speed of the update animation. (milliseconds)
+    language: config.language || "en",
+    colored: false,
+    showAdzanAlert: true,
+    showTomorrow: true,
+    vertical: true, // set false to horizontal view
+    alertTimer: 15000,
+	telegramAlert: [ false ], // [ Status, [["chat_id_1", "chat_id_2", ...], 'bot_token'] ]
 	},
 
 	getScripts: function() {
@@ -31,14 +32,14 @@ Module.register("MMM-PrayerTime",{
 
   // Define required translations.
 	getTranslations: function() {
-	return {
-		'en': 'translations/en.json',
-		'id': 'translations/id.json',
-		'ar': 'translations/ar.json',
-		'fr': 'translations/fr.json',
-		'de': 'translations/de.json',
-		'bn': 'translations/bn.json'
-	};
+    return {
+      'en': 'translations/en.json',
+      'id': 'translations/id.json',
+      'ar': 'translations/ar.json',
+      'fr': 'translations/fr.json',
+      'de': 'translations/de.json',
+      'bn': 'translations/bn.json'
+    };
 	},
 
   getCommands: function(commander) {
@@ -74,18 +75,18 @@ Module.register("MMM-PrayerTime",{
 		if(this.config.lat) {
 			params += "latitude=" + this.config.lat;
 		}
-		if (this.config.lon) {
+    if (this.config.lon) {
 			params += "&longitude=" + this.config.lon;
 		}
-		if (this.config.timezone) {
+    if (this.config.timezone) {
 			params += "&timezonestring=" + this.config.timezone;
-		}
+    }
 		if (this.config.method) {
 			params += "&method=" + this.config.method;
-		}
-		if (this.config.methodSettings) {
-                        params += "&methodSettings=" + encodeURI(this.config.methodSettings);
-                }
+    }
+    if (this.config.methodSettings) {
+      params += "&methodSettings=" + encodeURI(this.config.methodSettings);
+    }
 
 		return params;
 	},
@@ -265,39 +266,10 @@ Module.register("MMM-PrayerTime",{
 		}
     else {
       var table = document.createElement("table");
-		  table.className = "small";
+      table.className = "small";
 
-      var row = document.createElement("tr");
-      if (this.config.colored) {
-        row.className = "colored";
-      }
-      table.appendChild(row);
-
-      var occasionName = document.createElement("td");
-      occasionName.className = "occasion-name bright light";
-      occasionName.innerHTML = '&nbsp;';
-      row.appendChild(occasionName);
-
-      // today
-      var occasionTime = document.createElement("td");
-      occasionTime.className = "occasion-time bright light";
-      occasionTime.innerHTML = this.translate('TODAY');
-      row.appendChild(occasionTime);
-
-      if (this.config.showTomorrow) {
-        // nextday
-        var occasionTimeNext = document.createElement("td");
-        occasionTimeNext.className = "occasion-time bright light";
-        //occasionTimeNext.innerHTML = this.todaySchedule[t];
-        occasionTimeNext.innerHTML = this.translate('TOMORROW');
-        row.appendChild(occasionTimeNext);
-      }
-
-      //for (var i = 0, count = this.todaySchedule.length; i < count; i++) {
-      //for (t in this.todaySchedule)
-      for (t in this.arrTodaySchedule)
-      {
-        row = document.createElement("tr");
+      if (this.config.vertical) { // vertical view
+        var row = document.createElement("tr");
         if (this.config.colored) {
           row.className = "colored";
         }
@@ -305,15 +277,13 @@ Module.register("MMM-PrayerTime",{
 
         var occasionName = document.createElement("td");
         occasionName.className = "occasion-name bright light";
-        //occasionName.innerHTML = this.translate(t);
-        occasionName.innerHTML = this.translate(this.arrTodaySchedule[t][0].toUpperCase());
+        occasionName.innerHTML = '&nbsp;';
         row.appendChild(occasionName);
 
         // today
         var occasionTime = document.createElement("td");
         occasionTime.className = "occasion-time bright light";
-        //occasionTime.innerHTML = this.todaySchedule[t];
-        occasionTime.innerHTML = (this.config.timeFormat == 12 ? moment(this.arrTodaySchedule[t][1], ["HH:mm"]).format("h:mm A") : this.arrTodaySchedule[t][1]);
+        occasionTime.innerHTML = this.translate('TODAY');
         row.appendChild(occasionTime);
 
         if (this.config.showTomorrow) {
@@ -321,11 +291,104 @@ Module.register("MMM-PrayerTime",{
           var occasionTimeNext = document.createElement("td");
           occasionTimeNext.className = "occasion-time bright light";
           //occasionTimeNext.innerHTML = this.todaySchedule[t];
-          occasionTimeNext.innerHTML = (this.config.timeFormat == 12 ? moment(this.arrNextdaySchedule[t][1], ["HH:mm"]).format("h:mm A") : this.arrNextdaySchedule[t][1]);
+          occasionTimeNext.innerHTML = this.translate('TOMORROW');
           row.appendChild(occasionTimeNext);
         }
-      }
 
+        //for (var i = 0, count = this.todaySchedule.length; i < count; i++) {
+        //for (t in this.todaySchedule)
+        for (t in this.arrTodaySchedule)
+        {
+          row = document.createElement("tr");
+          if (this.config.colored) {
+            row.className = "colored";
+          }
+          table.appendChild(row);
+
+          var occasionName = document.createElement("td");
+          occasionName.className = "occasion-name bright light";
+          //occasionName.innerHTML = this.translate(t);
+          occasionName.innerHTML = this.translate(this.arrTodaySchedule[t][0].toUpperCase());
+          row.appendChild(occasionName);
+
+          // today
+          var occasionTime = document.createElement("td");
+          occasionTime.className = "occasion-time bright light";
+          //occasionTime.innerHTML = this.todaySchedule[t];
+          occasionTime.innerHTML = (this.config.timeFormat == 12 ? moment(this.arrTodaySchedule[t][1], ["HH:mm"]).format("h:mm A") : this.arrTodaySchedule[t][1]);
+          row.appendChild(occasionTime);
+
+          if (this.config.showTomorrow) {
+            // nextday
+            var occasionTimeNext = document.createElement("td");
+            occasionTimeNext.className = "occasion-time bright light";
+            //occasionTimeNext.innerHTML = this.todaySchedule[t];
+            occasionTimeNext.innerHTML = (this.config.timeFormat == 12 ? moment(this.arrNextdaySchedule[t][1], ["HH:mm"]).format("h:mm A") : this.arrNextdaySchedule[t][1]);
+            row.appendChild(occasionTimeNext);
+          }
+        }
+      }
+      else { // horizontal view
+        var table = document.createElement("table");
+        table.className = "small";
+
+        var row = document.createElement("tr");
+        if (this.config.colored) {
+          row.className = "colored";
+        }
+        table.appendChild(row);
+
+        var occasionName = document.createElement("td");
+        occasionName.className = "occasion-name bright light";
+        occasionName.innerHTML = '&nbsp;';
+        row.appendChild(occasionName);
+
+        // column label
+        for (t in this.arrTodaySchedule) {
+          var occasionTime = document.createElement("td");
+          occasionTime.className = "occasion-time bright light";
+          occasionTime.innerHTML = this.translate(this.arrTodaySchedule[t][0].toUpperCase());
+          row.appendChild(occasionTime);
+        }
+
+        // today
+        var rowToday = document.createElement("tr");
+        if (this.config.colored) {
+          rowToday.className = "colored";
+        }
+        table.appendChild(rowToday);
+
+        var occasionNameToday = document.createElement("td");
+        occasionNameToday.className = "occasion-time bright light";
+        occasionNameToday.innerHTML = this.translate('TODAY');
+        rowToday.appendChild(occasionNameToday);
+        for (t in this.arrTodaySchedule) {
+          var occasionTimeToday = document.createElement("td");
+          occasionTimeToday.className = "occasion-time bright light";
+          occasionTimeToday.innerHTML = (this.config.timeFormat == 12 ? moment(this.arrTodaySchedule[t][1], ["HH:mm"]).format("h:mm A") : this.arrTodaySchedule[t][1]);
+          rowToday.appendChild(occasionTimeToday);
+        }
+
+        if (this.config.showTomorrow) {
+          // nextday
+          var rowNext = document.createElement("tr");
+          if (this.config.colored) {
+            rowNext.className = "colored";
+          }
+          table.appendChild(rowNext);
+
+          var occasionNameNext = document.createElement("td");
+          occasionNameNext.className = "occasion-time bright light";
+          occasionNameNext.innerHTML = this.translate('TOMORROW');
+          rowNext.appendChild(occasionNameNext);
+          for (t in this.arrTodaySchedule) {
+            var occasionTimeNext = document.createElement("td");
+            occasionTimeNext.className = "occasion-time bright light";
+            occasionTimeNext.innerHTML = (this.config.timeFormat == 12 ? moment(this.arrNextdaySchedule[t][1], ["HH:mm"]).format("h:mm A") : this.arrNextdaySchedule[t][1]);
+            rowNext.appendChild(occasionTimeNext);
+          }
+        }
+      }
       wrapper.appendChild(table);
     }
 
