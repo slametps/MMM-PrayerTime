@@ -180,7 +180,6 @@ The following properties can be configured:
 				<br>The telegramAlert is a multidimensional array: <code>[ Status, [["chat_id_1", "chat_id_2", ...], 'bot_token'] ]</code>
 				<br>Refer to https://core.telegram.org/bots/api#sendmessage
 				<br>Refer to https://www.shellhacks.com/telegram-api-send-message-personal-notification-bot/
-				<br><b>Method option must be:</b> 99
 				<br><b>Example value:</b> <code>[ true, [["123456789", "987654321", ...], '4334584950:AAEPmjlh94N62Lv9jGWEgOftlxxAfMhB1gs'] ]</code>
 				<br><b>Default value:</b> <code>[false]</code>
 			</td>
