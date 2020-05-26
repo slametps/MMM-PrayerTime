@@ -18,6 +18,7 @@ Module.register("MMM-PrayerTime",{
 		showTomorrow: true,
 		alertTimer: 15000,
 		methodSettings: false,
+		telegramAlert: [ false ], // [ Status, [["chat_id_1", "chat_id_2", ...], 'bot_token'] ]
 	},
 
 	getScripts: function() {
@@ -212,6 +213,10 @@ Module.register("MMM-PrayerTime",{
           //console.log("this.arrTodaySchedule[indexAdzan][0]).toUpperCase()-"+(this.arrTodaySchedule[indexAdzan][0]).toUpperCase());
           this.sendSocketNotification("PLAY_ADZAN", {occasion: (this.arrTodaySchedule[indexAdzan][0]).toUpperCase()});
         }
+		if (this.config.telegramAlert[0]) {
+			this.sendSocketNotification("TELEGRAM_ALERT", {occasion: this.translate((this.arrTodaySchedule[indexAdzan][0]).toUpperCase()), telegramAlert_params: this.config.telegramAlert[1], telegramTxt: moment().format("HH:mm") + " : " + this.translate(alertMsg).replace("%OCCASION", this.translate((this.arrTodaySchedule[indexAdzan][0]).toUpperCase()))});
+			
+		}
       }
     }
   },
@@ -330,14 +335,17 @@ Module.register("MMM-PrayerTime",{
 	notificationReceived: function(notification, payload, sender) {
 		Log.log(this.name + ": received notification : " + notification);
 		if (notification == "PRAYER_TIME") {
-      if (payload.type == "PLAY_ADZAN") {
-        if (this.config.showAdzanAlert)
-          this.sendNotification("SHOW_ALERT", {title: this.translate("ADZAN"), message: this.translate("ALERT_ADZAN_MSG").replace("%OCCASION", this.translate("ASR")), timer: this.config.alertTimer});
-        this.sendSocketNotification("PLAY_ADZAN", {occasion: 'ASR'});
-      }
-      if (payload.type == "UPDATE_PRAYINGTIME") {
-        this.updateSchedule(0);
-      }
+			if (payload.type == "PLAY_ADZAN") {
+				if (this.config.showAdzanAlert)
+					this.sendNotification("SHOW_ALERT", {title: this.translate("ADZAN"), message: this.translate("ALERT_ADZAN_MSG").replace("%OCCASION", this.translate("ASR")), timer: this.config.alertTimer});
+				this.sendSocketNotification("PLAY_ADZAN", {occasion: 'ASR'});
+			}
+			if (payload.type == "TELEGRAM_ALERT") {
+				this.sendSocketNotification("TELEGRAM_ALERT", {occasion: this.translate("ASR"), telegramAlert_params: this.config.telegramAlert[1], telegramTxt: moment().format("HH:mm") + " : " + this.translate("ASR")});
+			}
+			if (payload.type == "UPDATE_PRAYINGTIME") {
+				this.updateSchedule(0);
+			}
 		}
 	}
 });

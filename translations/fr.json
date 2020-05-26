@@ -1,12 +1,12 @@
 {
-	"FAJR": "Fajr",
+	"FAJR": "Al-Fajr",
 	"SUNRISE": "Lever du soleil",
-	"DHUHR": "Dhuhr",
-	"ASR": "Asr",
+	"DHUHR": "Al-Dhuhr",
+	"ASR": "Al-Asr",
 	"SUNSET": "Coucher du soleil",
-	"MAGHRIB": "Maghrib",
-	"ISHA": "Isha",
-	"IMSAK": "Imsak",
+	"MAGHRIB": "Al-Maghrib",
+	"ISHA": "Al-Isha",
+	"IMSAK": "Al-Imsak",
 	"MIDNIGHT": "Minuit",
 
 	"ADZAN": "ADHAN",
