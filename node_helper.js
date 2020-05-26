@@ -36,7 +36,6 @@ module.exports = NodeHelper.create({
     }
 	else if (notification == "TELEGRAM_ALERT") {
 		var chat_ids = payload.telegramAlert_params[0];
-		console.log("CCCCCCCCCCCCCC");
 		chat_ids.forEach(function(chat_id) {
 			var telegramCmd = "curl -s --max-time 10 -d 'chat_id=" + chat_id + "&disable_web_page_preview=1&text=" + encodeURI(payload.telegramTxt).replace(/'/g, '%27') + "' https://api.telegram.org/bot" + payload.telegramAlert_params[1] + "/sendMessage";
 			async.parallel([
