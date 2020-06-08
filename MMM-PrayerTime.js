@@ -8,6 +8,11 @@ Module.register("MMM-PrayerTime",{
     timeFormat: config.timeFormat || 24,
     method: 5, // method of timing computation {0-Shia Ithna-Ashari,1-University of Islamic Sciences, Karachi,2-Islamic Society of North America (ISNA),3-Muslim World League (MWL),4-Umm al-Qura, Makkah,5-Egyptian General Authority of Survey,7-Institute of Geophysics, University of Tehran}
     methodSettings: false,
+    school: 0, // 0 = Shafii, 1 = Hanafi
+    adjustment: 0, // 0 = no days of adjustment to hijri date(s)
+    tune: '', // Comma Separated String of integers to offset timings returned by the API in minutes. Example: 5,3,5,7,9,7. See https://aladhan.com/calculation-methods
+    midnightMode: 0, // 0 for Standard (Mid Sunset to Sunrise), 1 for Jafari (Mid Sunset to Fajr). If you leave this empty, it defaults to Standard.
+    latitudeAdjustmentMethod: '', // Method for adjusting times higher latitudes - for instance, if you are checking timings in the UK or Sweden. 1 - Middle of the Night, 2 - One Seventh, 3 - Angle Based
     playAdzan: ['fajr', 'dhuhr', 'asr', 'maghrib', 'isha'],
     notDisplayed: ['midnight', 'sunset'],
     useUpdateInterval: true,
@@ -85,6 +90,21 @@ Module.register("MMM-PrayerTime",{
     }
     if (this.config.methodSettings) {
       params += "&methodSettings=" + encodeURI(this.config.methodSettings);
+    }
+    if (this.config.school) {
+      params += "&school=" + this.config.school;
+    }
+    if (this.config.adjustment) {
+      params += "&adjustment=" + this.config.adjustment;
+    }
+    if (this.config.tune) {
+      params += "&tune=" + encodeURI(this.config.tune);
+    }
+    if (this.config.midnightMode) {
+      params += "&midnightMode=" + this.config.midnightMode;
+    }
+    if (this.config.latitudeAdjustmentMethod) {
+      params += "&latitudeAdjustmentMethod=" + this.config.latitudeAdjustmentMethod;
     }
 
 		return params;
