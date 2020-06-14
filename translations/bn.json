@@ -1,0 +1,21 @@
+{
+	"FAJR": "ফজর",
+	"SUNRISE": "সূর্যোদয়",
+	"DHUHR": "যোহর",
+	"ASR": "আসর",
+	"SUNSET": "সূর্যাস্ত",
+	"MAGHRIB": "মাগরিব",
+	"ISHA": "ইশা",
+	"IMSAK": "Imsak",
+	"MIDNIGHT": "মধ্যরাত্রি",
+
+	"ADZAN": "আযানের",
+	"ALERT_ADZAN_MSG": "এটা সময় প্রার্থনা। আসুন এখন %OCCASION প্রার্থনা করি!",
+	"ALERT_IMSAK_MSG": "মনোযোগ! এখন %OCCASION!",
+
+	"TODAY": "আজ",
+	"TOMORROW": "আগামীকাল",
+
+	"TXT_PRAYERTIME": "প্রার্থনা সময়",
+	"TXT_PRAYERTIME_DESC": "আজ এবং আগামীকাল জন্য প্রেমের সময় প্রদর্শন করুন"
+}
