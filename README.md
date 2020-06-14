@@ -105,6 +105,42 @@ The following properties can be configured:
                                 <br><b>Default value:</b> <code>false</code>
                         </td>
                 </tr>
+                <tr>
+                        <td><code>school</code></td>
+                        <td>0 for Shafi (or the standard way), 1 for Hanafi. If you leave this empty, it defaults to Shafii.
+                                <br><b>Default value:</b> <code>0</code>
+                        </td>
+                </tr>
+                <tr>
+                        <td><code>adjustment</code></td>
+                        <td>Number of days to adjust hijri date(s)
+                                <br><b>Example value:</b> <code>1 or 2 or -1 or -2</code>
+                                <br><b>Default value:</b> <code>false</code>
+                        </td>
+                </tr>
+                <tr>
+                        <td><code>tune</code></td>
+                        <td>Same as methodSettings, create your own calculation method,
+				<br>The methodSettings parameter accepts comma separated values in the following order: <code>FajrAngle,MaghribAngleOrMinsAfterSunset,IshaAngleOrMinsAfterSunset</code>
+                                <br>Refer to https://aladhan.com/calculation-methods
+				<br><b>Method option must be:</b> 99
+                                <br><b>Example value:</b> <code>5,3,5,7,9,7</code>
+                                <br><b>Default value:</b> <code>false</code>
+                        </td>
+                </tr>
+                <tr>
+                        <td><code>midnightMode</code></td>
+                        <td>0 for Standard (Mid Sunset to Sunrise), 1 for Jafari (Mid Sunset to Fajr). If you leave this empty, it defaults to Standard.
+                                <br><b>Default value:</b> <code>0</code>
+                        </td>
+                </tr>
+                <tr>
+                        <td><code>latitudeAdjustmentMethod</code></td>
+                        <td>Method for adjusting times higher latitudes - for instance, if you are checking timings in the UK or Sweden.
+                                <br><b>Possible values:</b> <code>1 - Middle of the Night, 2 - One Seventh, 3 - Angle Based</code>
+                                <br><b>Default value:</b> <code>3</code>
+                        </td>
+                </tr>
 		<tr>
 			<td><code>playAdzan</code></td>
 			<td>List/array of the prayer time name to play Adzan.
