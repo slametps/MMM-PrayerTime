@@ -1,0 +1,26 @@
+{
+  "name": "MMM-PrayerTime",
+  "version": "1.0.0",
+  "description": "A MagicMirror module to display moslem praying time with Adhan recital.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/slametps/MMM-PrayerTime.git"
+  },
+  "keywords": [
+    "MagicMirror",
+    "Moslem",
+    "Islam",
+    "PrayerTime",
+    "adzan"
+  ],
+  "author": "Slamet Puji Santuso",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/slametps/MMM-PrayerTime/issues"
+  },
+  "homepage": "https://github.com/slametps/MMM-PrayerTime#readme",
+  "dependencies": {
+    "async": "latest",
+    "child_process": "latest"
+  }
+}
