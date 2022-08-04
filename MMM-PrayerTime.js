@@ -155,7 +155,7 @@ Module.register("MMM-PrayerTime",{
   updateSchedule: function(delay) {
     var self = this;
     Log.log(self.name + ': updateSchedule');
-    var urlBase = "http://api.aladhan.com/timings/";
+    var urlBase = "http://api.aladhan.com/v1/timings/";
     var curUnixTime = moment().unix();
     var urlToday = urlBase + this.getParams(curUnixTime);
     var urlNextday = urlBase + this.getParams(curUnixTime + 86400);
